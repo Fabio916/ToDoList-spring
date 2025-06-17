@@ -32,4 +32,15 @@ public class UserService {
 		return userRepository.save(user);
 	}
 	
+	public User update(User obj, Long id) {
+		User entity = userRepository.getReferenceById(id);
+		updateData(entity, obj);
+		return userRepository.save(entity);
+	}
+
+	private void updateData(User entity, User obj) {
+		entity.setName(obj.getName());
+		entity.setEmail(obj.getEmail());
+		entity.setPhone(obj.getPhone());
+	}
 }
