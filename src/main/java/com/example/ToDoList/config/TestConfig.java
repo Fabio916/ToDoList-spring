@@ -21,12 +21,7 @@ public class TestConfig implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		User user = new User(null, "Jonas", "jonas@gmail.com", "1199999982", "561253");
-		Tasks task = new Tasks(null, "fazer um projeto", false, user);
 		
-		/*userRepository.save(user);
-		tasksRepository.save(task);
-		*/
 	}
 
 }
