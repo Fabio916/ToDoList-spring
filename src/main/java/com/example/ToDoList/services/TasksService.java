@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.ToDoList.entities.Tasks;
 import com.example.ToDoList.repositories.TasksRepository;
+import com.example.ToDoList.services.exceptions.TaskWithoutUserException;
 
 @Service
 public class TasksService {
@@ -30,5 +31,12 @@ public class TasksService {
 
 	private void updateData(Tasks updateTask, Tasks obj) {
 		updateTask.setDescription(obj.getDescription());
+	}
+	
+	public Tasks insert(Tasks obj) {
+		if (obj.getUser() == null) {
+			throw new TaskWithoutUserException("A task must be associated with a user.");
+		}
+		return tasksRepository.save(obj);
 	}
 }
